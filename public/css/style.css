@@ -1,0 +1,25 @@
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
+@import url(http://fonts.googleapis.com/css?family=Sigmar+One);
+body {  
+  margin: 0;
+  padding: 0;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
+  background-color: #7FFF00;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sigmar One', sans-serif;
+  font-weight: bold;
+}
+
+#rounded {
+  background: #98FB98;
+  border-radius: 40px;
+  border: 20px solid green;
+  padding: 40px;
+  margin: 25px;
+  box-shadow: 5px 5px 30px #000000;
+}

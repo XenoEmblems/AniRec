@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pitch.It</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+  
+  <script src='bundle.js'></script>
+  <script src='js/app.js'></script>
+  <script src='js/models'></script>
+  <script src='js/collections'></script>
+  <script src='js/routers/movie_router'></script>
+  <script src='js/routers/user_router'></script>
+  <!-- <script src="js/models/movies.js"></script>
+  // <script src="js/models/users.js"></script>
+  // <script src="js/collections/jobPosts.js"></script>
+  // <script src="js/collections/employers.js"></script>
+  // <script src="js/collections/positions.js"></script>
+  // <script src="js/routers/router.js"></script>
+  // <script src="js/views/jobPostListView.js"></script>
+  // <script src="js/views/jobPostModalView.js"></script>
+  // <script src="js/views/positionModalView.js"></script>
+  // <script src="js/views/employerModalView.js"></script>
+  // <script src="js/views/userInfoView.js"></script>
+  // <script src="js/views/userInfoModalView.js"></script>
+  // <script src="js/views/jobOps.js"></script -->
+</head>
+
+<body>
+<div id="rounded">
+<!--Main Body Divs--> 
+  <header>
+    <h1>PITCH.IT</h1>
+    <h3>Media Reccomendation Service</h3>
+    <hr>
+  </header>
+
+  <div id='user-access'></div>
+  <hr>
+  <div id='user-accounts'></div>
+  <div id='edit'></div>
+    <div id='searchbox'>
+      <h2>Search for your favorite Movies and Shows to Pitch to other users!</h2>
+      <input name="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField"/>
+      <button id="searchbutton">Search</button>
+    </div>
+</div>
+<!-- Login Button and Sign In Button -->
+
+<!--LogIn TEMPLATES-->
+<template id="signin-user-template">
+  <div id="sigin-view">
+      <input type="text" id="create-username" placeholder="username">
+      <input type="password" id="create-password" placeholder="password">
+      <button id="create-button">Sign Up</button>
+  </div>
+</template>
+
+<template id="login-template">
+      <input type="text" id="login-username" placeholder="username">
+      <input type="password" id="login-password" placeholder="password">
+      <button id="login-button">Log In</button>
+</template>
+
+<template id="user-template">
+  <p id="current-user" data-userid={{id}} data-username={{username}}> {{username}} Profile</p>
+  <b> {{username}} </b>
+  <img> {{profilePic}} </img>
+  <p><b>Interests:</b> {{interests}} </p>
+  <p><b>Favorite Genres:</b> {{favoriteGenre}} </p>
+  <p><b>Preferences:</b> {{prefereance}} </p>
+
+  <button id="logout-button">Logout</button>
+  <button id="edit-button">Update Info</button>
+  <button id="delete-button">Delete Profile</button>
+</template>
+
+<template id='update-template'>
+  <div class="update-view">
+      <input type="text" id="update-username" placeholder="{{username}}" data-userId={{id}}>
+      <input type="password" id="update-password" placeholder="new-password">
+      <input type="text" id="update-profilePic" placeholder="New Profile Picture">
+      <input type="text" id="update-interests" placeholder="Interested in Movies/Tv Series or both?">
+      <input type="text" id="update-genre" placeholder="What are your favorite genres?">
+      <input type="text" id="preferance" placeholder="What you prefer to have in your movie and/or tv series?">
+      <button id="update-button">Update</button>
+    </div>
+</template>
+<template id='search-template'>
+  <div class
+
+
+<template id='all-user-template'></template>
+<!-- APP TEMPLATES-->
+<!-- <template id='account-template'>
+      <div class='account' id='{{account_type}}' data-accountId={{id}}>
+        <h3>{{account_type}}</h3>
+        <p data-balance={{balance}}>{{balance}}</p>
+        <input type="text" class="deposit" placeholder="0">
+        <button id="deposit-button">Deposit</button>
+        <input type="text" class="withdraw" placeholder="{{balance}}">
+        <button id="withdraw-button">Withdraw</button>
+      </div>
+</template> -->
+
+</body>
+</html>
