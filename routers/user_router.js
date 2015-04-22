@@ -1,23 +1,23 @@
 var express          = require('express'),
-    bodyParser       = require('body-parser'),
-    path             = require('path'),
-    logger           = require('morgan'),
     bcrypt           = require('bcrypt'),
+    // path             = require('path'),
+    // logger           = require('morgan'),
     session          = require('express-session'),
-    models           = require('../../../models'),
+    models           = require('../models'),
     Movie            = models.movies,
     User             = models.users;
 
-var app = express();
+var userRouter = express.Router();
+// var app = express();
 
-app.use(logger('dev'));
-app.use( bodyParser() );
+// app.use(logger('dev'));
+// // app.use( bodyParser() );
 
 //Login and Signin shit
 
-app.use(session({
+userRouter.use(session({
   secret: 'donttellemdonttellem',
-  saveUnitiialized: false,
+  saveUnitialized: false,
   resave: false
 }));
 
@@ -30,7 +30,7 @@ var restrictAccess = function(req, res, next) {
 
 //LOGIN AND LOG OUT
 
-app.post('/sessions', function(req, res) {
+userRouter.post('/sessions', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
@@ -56,17 +56,17 @@ app.post('/sessions', function(req, res) {
   });
 });
 
-app.delete('/sessions', function(req, res) {
+userRouter.delete('/sessions', function(req, res) {
   delete req.session.currentUser;
   res.send({ msg: 'Successfully logged out' });
 });
 
-app.get('/current_user', function(req, res) {
+userRouter.get('/current_user', function(req, res) {
   if (req.session.currentUser) res.send(req.session.currentUer)
 });
 
 //GET THE USERS
-app.get('/users/:id', function(req, res) {
+userRouter.get('/:id', function(req, res) {
   User
     .findOne({
       where: { id: req.params.id },
@@ -78,7 +78,7 @@ app.get('/users/:id', function(req, res) {
 });
 //UPDATE THE USERS
 
-app.put('/users', restrictAccess, function(req, res) {
+userRouter.put('/', restrictAccess, function(req, res) {
   bcrypt.hash(req.body.password, 10, function(err, hash) {
     User
       .findOne({
@@ -99,7 +99,7 @@ app.put('/users', restrictAccess, function(req, res) {
 });
 
 //DELETE THE USERS
-app.delete('/users/:id', restrictAccess, function(req, res) {
+userRouter.delete('/:id', restrictAccess, function(req, res) {
   User
     .findOne(req.params.id)
     .then(function(user) {
@@ -115,29 +115,30 @@ app.delete('/users/:id', restrictAccess, function(req, res) {
 //UPDATE THE MOVIES IN THE USER ACCOUNT
 //UPDATE THE PITCH IN THE USER ACCOUNT
 
-app.put('/users/:id/movies/:movie_id', restrictAccess, function(req, res) {
-  Movie
-    .findOne(req.params.movie_id)
-    .then(function(movie) {
-      movie
-        .update({ pitch: req.body.pitch })
-        .then(function() {
-          res.send(movie);
-        });
-    });
-});
+// userRouter.put('/:id/movies/:movie_id', restrictAccess, function(req, res) {
+//   Movie
+//     .findOne(req.params.movie_id)
+//     .then(function(movie) {
+//       movie
+//         .update({ pitch: req.body.pitch })
+//         .then(function() {
+//           res.send(movie);
+//         });
+//     });
+// });
 
-app.delete('/users/:id/movies/:movie_id', restrictAccess, function(req, res) {
-  Movie
-    .findOne(req.params.movie_id)
-    .then(function(account) {
-      account
-        .destroy()
-        .then(function() {
-          res.send(account);
-        });
-    });
-});
+// userRouter.delete('/:id/movies/:movie_id', restrictAccess, function(req, res) {
+//   Movie
+//     .findOne(req.params.movie_id)
+//     .then(function(account) {
+//       account
+//         .destroy()
+//         .then(function() {
+//           res.send(account);
+//         });
+//     });
+// });
 
+module.exports = userRouter;
 
 

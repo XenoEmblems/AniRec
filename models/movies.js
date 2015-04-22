@@ -8,12 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     plot: DataTypes.STRING,
     imdbrating: DataTypes.STRING,
     type: DataTypes.STRING,
-    pitch: DataTypes.TEXT
+    pitch: DataTypes.TEXT,
+    movietvid: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        movies.belongsTo(models.users, { foreignKey: 'movietv_id' 
+        movies.belongsTo(models.users, { foreignKey: 'movietvid' 
         })
       }
     }

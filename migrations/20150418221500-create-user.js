@@ -3,7 +3,7 @@ module.exports = {
   up: function(migration, DataTypes, done) {
     migration.createTable("users", {
       id: {
-        allowNull: false,
+        allowNull: true,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
@@ -26,8 +26,11 @@ module.exports = {
       preferance: {
         type: DataTypes.TEXT
       },
-      movietvid: {
-        type: DataTypes.INTEGER
+      createdAt: {
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        type: DataTypes.DATE
       }
     }).done(done);
   },

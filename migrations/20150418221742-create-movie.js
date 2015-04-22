@@ -3,7 +3,7 @@ module.exports = {
   up: function(migration, DataTypes, done) {
     migration.createTable("movies", {
       id: {
-        allowNull: false,
+        allowNull: true,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
@@ -31,6 +31,15 @@ module.exports = {
       },
       pitch: {
         type: DataTypes.TEXT
+      },
+      movietvid: {
+        type: DataTypes.INTEGER
+      },
+      createdAt: {
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        type: DataTypes.DATE
       }
     }).done(done);
   },

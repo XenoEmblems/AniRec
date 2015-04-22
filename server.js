@@ -5,8 +5,8 @@ var application_root = __dirname,
     logger           = require('morgan'),
     session          = require('express-session');
     models           = require('./models'),
-    movieRouter      = require('./public/js/routers/movie_router.js'),
-    userRouter       = require('./public/js/routers/user_router.js');
+    movieRouter      = require('./routers/movie_router'),
+    userRouter       = require('./routers/user_router');
     
 
 var app   = express();
@@ -25,11 +25,14 @@ app.get('/', function(req, res) {
   res.send('Good Job Eric');
 });
 
+
+// routes.initialize(app);
+
 app.listen(9001, function() {
   console.log('Server listening on 9001...');
 });
 
-
+module.exports = app;
 
 
 

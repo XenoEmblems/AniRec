@@ -6,14 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     interests: DataTypes.STRING,
     favoriteGenre: DataTypes.STRING,
     profilePic: DataTypes.STRING,
-    preferance: DataTypes.TEXT,
-    movietvid: DataTypes.INTEGER
+    preferance: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
         users.hasMany(models.movies, {
-          foreignKey: 'movietv_id',
+          foreignKey: 'movietvid',
           onDelete: 'cascade',
           hooks: true
         })
