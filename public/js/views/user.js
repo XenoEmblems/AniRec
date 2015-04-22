@@ -1,15 +1,15 @@
 App.Views.User = Backbone.View.extend ({
 
-  el: '#user-view',
+  el: '#user-modal',
 
   events: {
+    'click #showuserbutton': 'renderUser'
     'click #update-button': 'update',
     'click #close-button': 'close'
   },
 
   initialize: function(model) {
     console.log('new User View created');
-    this.renderUser();
   },
 
   renderUser: function() {
